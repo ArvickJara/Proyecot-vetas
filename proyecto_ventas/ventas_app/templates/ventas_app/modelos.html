@@ -1,0 +1,31 @@
+{% extends 'ventas_app/plantilla.html' %}
+
+{% block titulo%}
+{{ titulo }}
+{% endblock%}
+        {% block contenido%}
+        <h1> {{titulo}}</h1>
+        <a class="btn btn-success" href="/crearmarcas/"> Crear nuevas marcas</a><br>
+        
+        <table class="table table-striped">
+            <tr class="table-warning">
+                <td> Marca </td>
+              
+                <td>Acciones</td>
+                <td colspan="2" align="center" >Acciones</td>
+            </tr>
+            {% for x in marcas %}
+
+        
+            <tr>
+                <td>{{ x.marca }}</td>
+                <td align="center">
+                    <a class="btn btn-outline-warning" href="{% url 'actualizarmarcas' x.id %}">Editar</a></td>
+                <td align="center">
+                    <a class="btn btn-outline-danger" href="{% url 'eliminarmarcas' x.id %}">Eliminar</a></td>
+            </tr>
+        
+            {% endfor %}
+            
+        </table>
+      {% endblock %}
